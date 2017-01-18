@@ -1,22 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from './task.model';
 
 @Component({
   selector: 'task-list',
   template: `
   <ul> <!-- repeater DIRECTIVE --> <!-- tasks is the array and it is assigning each iteration to currentTask temporarly -->
-    <li *ngFor="let currentTask of tasks" [class]="priorityColor(currentTask)"(click)="isDone(currentTask)" >{{currentTask.description}} <button class="btn btn-xs" (click)="editTask(currentTask)">Edit</button></li><!-- assigning li tag to a loop/repeater // button is called an event binding-->
+    <li *ngFor="let currentTask of childTaskList" (click)="isDone(currentTask)" >{{currentTask.description}} <button class="btn btn-xs" (click)="editButtonHasBeenClicked(currentTask)">Edit</button></li><!-- assigning li tag to a loop/repeater // button is called an event binding-->
   </ul>
   `
 })
 
 
 export class TaskListComponent {
-  tasks: Task[] = [
-    new Task('Finish weekend Angular homework for Epicodus course', 1),
-    new Task('Begin brainstorming possible JavaScript group projects', 2),
-    new Task('Add README file to last few Angular repos on GitHub', 3)
-  ];
+  @Input() childTaskList: Task[];// through import input
+  @Output() editButtonSender = new EventEmitter();
+
+  editButtonHasBeenClicked(taskToEdit: Task) {
+    this.editButtonSender.emit(taskToEdit);
+  }
 
 
   isDone(clickedTask: Task) {
