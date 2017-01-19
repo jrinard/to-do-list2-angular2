@@ -12,19 +12,7 @@ import { Task } from './task.model';
     <h3>{{currentFocus}}</h3>
     <task-list [childTaskList]="masterTaskList" (editButtonSender)="editTask($event)"></task-list><!-- Transfer from child -->
     <hr>
-    <div *ngIf="selectedTask">
-      <h3>{{selectedTask.description}}</h3>
-      <p>Task Complete? {{selectedTask.done}}</p>
-        <h3>Edit Task</h3>
-        <label>Enter Task Description:</label>
-        <input [value]="selectedTask.description" (input)="selectedTask.description = $event.target.value">
-        <label>Enter Task Priority (1-3):</label>
-        <br>
-        <input type="radio" [(ngModel)]="selectedTask.priority" [value]="1">1 (Low Priority)<br>
-        <input type="radio" [(ngModel)]="selectedTask.priority" [value]="2">2 (Medium Priority)<br>
-        <input type="radio" [(ngModel)]="selectedTask.priority" [value]="3">3 (High Priority)
-        <button class="btn btn-xs" (click)="finishedEditing()">Close</button>
-      </div>
+    <edit-task [childSelectedTask]="selectedTask" (doneButtonClickedSender)="finishedEditing()"></edit-task>
    </div>
   `
 })

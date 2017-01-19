@@ -4,12 +4,13 @@ import { BrowserModule } from '@angular/platform-browser'; // imports code neces
 import { AppComponent }   from './app.component';//actually refers to the root component we created
 import { FormsModule } from '@angular/forms';
 import { TaskListComponent }  from './task-list.component';
+import { EditTaskComponent } from './edit-task.component';
 
 
 //2. Module Decorator
 @NgModule({
   imports: [ BrowserModule, FormsModule ], //imports array under the decorator imports other pieces of our application we want included in this module.
-  declarations: [ AppComponent, TaskListComponent ], //array of all components that will reside in this module
+  declarations: [ AppComponent, TaskListComponent, EditTaskComponent ], //array of all components that will reside in this module
   bootstrap:    [ AppComponent ] // array of components required immediately upon launching the application
 })
 

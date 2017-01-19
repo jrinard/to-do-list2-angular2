@@ -16,7 +16,7 @@ export class TaskListComponent {
   @Output() editButtonSender = new EventEmitter();
 
   editButtonHasBeenClicked(taskToEdit: Task) {
-    this.editButtonSender.emit(taskToEdit);
+    this.editButtonSender.emit(taskToEdit); // sending specific task to the parent using emit
   }
 
 
