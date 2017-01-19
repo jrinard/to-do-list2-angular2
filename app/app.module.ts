@@ -5,12 +5,16 @@ import { AppComponent }   from './app.component';//actually refers to the root c
 import { FormsModule } from '@angular/forms';
 import { TaskListComponent }  from './task-list.component';
 import { EditTaskComponent } from './edit-task.component';
+import { NewTaskComponent } from './new-task.component';
 
 
 //2. Module Decorator
 @NgModule({
   imports: [ BrowserModule, FormsModule ], //imports array under the decorator imports other pieces of our application we want included in this module.
-  declarations: [ AppComponent, TaskListComponent, EditTaskComponent ], //array of all components that will reside in this module
+  declarations: [ AppComponent,
+                  TaskListComponent,
+                  EditTaskComponent,
+                  NewTaskComponent ], //array of all components that will reside in this module
   bootstrap:    [ AppComponent ] // array of components required immediately upon launching the application
 })
 
