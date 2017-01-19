@@ -6,7 +6,7 @@ import { Task } from './task.model';
   template: `
     <h3>New Task</h3>
     <div>
-      <label>Enter Task Description:</label>  <!-- !!!!!!!!!!!!!!!Question What if we want more then just description as in input value!!!!!!!!!!!-->
+      <label>Enter Task Description:</label>
       <input #newDescription> <!-- By adding the template reference variable #newDescription to this field: <input #newDescription> we're instructing Angular to save the entire field, including any information the user inserts into it, into a newDescription variable. We can then retrieve the user input by calling newDescription.value -->
     </div>
     <div>

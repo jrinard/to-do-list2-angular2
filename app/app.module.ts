@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { TaskListComponent }  from './task-list.component';
 import { EditTaskComponent } from './edit-task.component';
 import { NewTaskComponent } from './new-task.component';
+import { CompletenessPipe } from  './completeness.pipe';
 
 
 //2. Module Decorator
@@ -14,7 +15,8 @@ import { NewTaskComponent } from './new-task.component';
   declarations: [ AppComponent,
                   TaskListComponent,
                   EditTaskComponent,
-                  NewTaskComponent ], //array of all components that will reside in this module
+                  NewTaskComponent,
+                  CompletenessPipe], //array of all components that will reside in this module
   bootstrap:    [ AppComponent ] // array of components required immediately upon launching the application
 })
 
