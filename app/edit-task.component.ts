@@ -8,7 +8,7 @@ import { Task } from './task.model';
       <h3>{{childSelectedTask.description}}</h3>
       <p>Task Complete? {{childSelectedTask.done}}</p>
       <h3>Edit Task</h3>
-      <label>Enter Task Description:</label>
+      <label>Enter Task Description:</label> <!-- !!!!!!! Do we want this verison or should we make it dryer -->
       <input [value]="childSelectedTask.description" (input)="childSelectedTask.description = $event.target.value">
       <label>Enter Task Priority (1-3):</label>
       <br>

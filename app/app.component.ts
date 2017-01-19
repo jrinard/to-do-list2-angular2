@@ -10,10 +10,11 @@ import { Task } from './task.model';
   <div class="container">
     <h1>To Do List for {{month}}/{{day}}/{{year}}</h1>
     <h3>{{currentFocus}}</h3>
-    <task-list [childTaskList]="masterTaskList" (editButtonSender)="editTask($event)"></task-list><!-- Transfer from child -->
+    <!-- [DataDown] (DataUp) -->
+    <task-list [childTaskList]="masterTaskList" (editButtonSender)="editTask($event)"></task-list><!-- (editButtonSender)Transfer from child --> <!-- [childTaskList] Transfer from module down -->
     <hr>
-    <edit-task [childSelectedTask]="selectedTask" (doneButtonClickedSender)="finishedEditing()"></edit-task>
-    <new-task (newTaskSender)="addTask($event)"></new-task>
+    <edit-task [childSelectedTask]="selectedTask" (doneButtonClickedSender)="finishedEditing()"></edit-task> <!-- [childSelectedTask] goes down to edit-task --> <!-- doneButtonClickedSender came up from edit-task -->
+    <new-task (newTaskSender)="addTask($event)"></new-task><!-- (newTaskSender)comes up from new-task-->
    </div>
   `
 })
@@ -34,11 +35,11 @@ export class AppComponent {
 
   selectedTask: Task = null;
 
-  editTask(clickedTask: Task): void {
+  editTask(clickedTask: Task): void { //called above
     this.selectedTask = clickedTask;
   }
 
-  finishedEditing(): void {
+  finishedEditing(): void { //called above
     this.selectedTask = null;
   }
 

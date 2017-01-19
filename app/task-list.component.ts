@@ -5,17 +5,19 @@ import { Task } from './task.model';
   selector: 'task-list',
   template: `
   <ul> <!-- repeater DIRECTIVE --> <!-- tasks is the array and it is assigning each iteration to currentTask temporarly -->
-    <li *ngFor="let currentTask of childTaskList" (click)="isDone(currentTask)" >{{currentTask.description}} <button class="btn btn-xs" (click)="editButtonHasBeenClicked(currentTask)">Edit</button></li><!-- assigning li tag to a loop/repeater // button is called an event binding-->
+    <li *ngFor="let currentTask of childTaskList" (click)="isDone(currentTask)" >{{currentTask.description}}
+    <button class="btn btn-xs" (click)="editButtonHasBeenClicked(currentTask)">Edit</button> <!-- Edit Event Binding -->
+    </li><!-- assigning li tag to a loop/repeater // button is called an event binding-->
   </ul>
   `
 })
 
 
 export class TaskListComponent {
-  @Input() childTaskList: Task[];// through import input
-  @Output() editButtonSender = new EventEmitter();
+  @Input() childTaskList: Task[];// Imported through input and used in *ngFor
+  @Output() editButtonSender = new EventEmitter(); // task/object gets passed up to parent via .emit
 
-  editButtonHasBeenClicked(taskToEdit: Task) {
+  editButtonHasBeenClicked(taskToEdit: Task) {// When button is clicked the object/task gets passed to taskToEdit. Then editButtonSender. runs emit to output task through the Event Emitter
     this.editButtonSender.emit(taskToEdit); // sending specific task to the parent using emit
   }
 
