@@ -12,8 +12,8 @@ import { Task } from './task.model';
 
   <ul> <!-- repeater DIRECTIVE --> <!-- tasks is the array and it is assigning each iteration to currentTask temporarly -->
     <li *ngFor="let currentTask of (childTaskList | completeness:filterByCompleteness)" (click)="isDone(currentTask)" >{{currentTask.description}}
-    <input *ngIf="currentTask.done === true" type="checkbox" checked (click)="toggleDone(currentTask, false)"/>
-    <input *ngIf="currentTask.done === false" type="checkbox" (click)="toggleDone(currentTask, true)"/>
+    <input *ngIf="currentTask.done === true" type="checkbox" checked (click)="toggleDone(currentTask)"/>
+    <input *ngIf="currentTask.done === false" type="checkbox" (click)="toggleDone(currentTask)"/>
     <button class="btn btn-xs" (click)="editButtonHasBeenClicked(currentTask)">Edit</button> <!-- Edit Event Binding -->
     </li><!-- assigning li tag to a loop/repeater // button is called an event binding-->
   </ul>
@@ -29,13 +29,8 @@ export class TaskListComponent {
     this.editButtonSender.emit(taskToEdit); // sending specific task to the parent using emit
   }
 
-
-  isDone(clickedTask: Task): void {
-    if (clickedTask.done === true) {
-      // alert("This task is done!");
-    } else {
-      // alert("This task is not done. Better get to work!");
-    }
+  toggleDone(clickedTask: Task): void {
+    clickedTask.done = !clickedTask.done; // Toggle boolean -> bool = !bool; -or- if bool is not initialized -> bool = !bool || true;
   }
 
   priorityColor(currentTask: Task): string {
